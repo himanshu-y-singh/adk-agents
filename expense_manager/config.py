@@ -14,7 +14,7 @@ class ResearchConfiguration:
     """
 
     critic_model: str = os.getenv("CRITIC_MODEL", "gemini-2.5-flash")
-    worker_model: str = os.getenv("WORKER_MODEL", "gemini-2.5-flash")
+    worker_model: str = os.getenv("WORKER_MODEL", "gemini-2.5-flash-lite")
 
 @dataclass
 class SessionMemoryConfiguration:
@@ -48,6 +48,11 @@ class AgentConfiguration:
     categorization_agent_name: str = "categorization_agent"
 
 @dataclass
+class McpConfiguration:
+    """ configuration for mcp """
+    toolbox_url: str = os.getenv("TOOLBOX_URL", "http://127.0.0.1:5000")    
+    
+@dataclass
 class AppConfig:
     """ The central configuration class for the application. """
 
@@ -63,6 +68,9 @@ class AppConfig:
     )
     agent_config: AgentConfiguration = field(
         default_factory=lambda: AgentConfiguration()
+    )
+    mcp_config: McpConfiguration = field(
+        default_factory=lambda: McpConfiguration()
     )
     
 config = AppConfig()

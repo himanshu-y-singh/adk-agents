@@ -1,72 +1,86 @@
 sources:
   my-pg-source:
     kind: postgres
-    host: 127.0.0.1
-    port: 5432
-    database: toolbox_db
-    user: toolbox_user
-    password: my-password
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    database: ${DB_NAME}
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+
 tools:
-  search-hotels-by-name:
+  add-user:
     kind: postgres-sql
     source: my-pg-source
-    description: Search for hotels based on name.
+    description: Adds a new user to the database.
     parameters:
       - name: name
         type: string
-        description: The name of the hotel.
-    statement: SELECT * FROM hotels WHERE name ILIKE '%' || $1 || '%';
-  search-hotels-by-location:
+        description: Full name of the user.
+      - name: email
+        type: string
+        description: Email address of the user.
+      - name: relationship_type
+        type: string
+        description: Relationship type (family, friend, colleague, other).
+      - name: company
+        type: string
+        description: Company name (optional).
+      - name: college
+        type: string
+        description: College name (optional).
+    statement: |
+      INSERT INTO users (name, email, relationship_type, company, college, created_at)
+      VALUES (
+        $1,
+        $2,
+        $3,
+        COALESCE($4, NULL),
+        COALESCE($5, NULL),
+        now()
+      );
+
+  add-transaction:
     kind: postgres-sql
     source: my-pg-source
-    description: Search for hotels based on location.
+    description: Adds a new transaction to the database.
     parameters:
-      - name: location
+      - name: amount
         type: string
-        description: The location of the hotel.
-    statement: SELECT * FROM hotels WHERE location ILIKE '%' || $1 || '%';
-  book-hotel:
+        description: Transaction amount (decimal as string, e.g. "1250.75").
+      - name: from_user
+        type: string
+        description: Name of the user who made the transaction.
+    statement: |
+      INSERT INTO transactions (amount, from_user, created_at)
+      VALUES ($1::NUMERIC, $2::VARCHAR, now());
+
+  get-transactions:
     kind: postgres-sql
     source: my-pg-source
-    description: >-
-       Book a hotel by its ID. If the hotel is successfully booked, returns a NULL, raises an error if not.
+    description: Retrieves transactions for a user.
     parameters:
-      - name: hotel_id
+      - name: from_user
         type: string
-        description: The ID of the hotel to book.
-    statement: UPDATE hotels SET booked = B'1' WHERE id = $1;
-  update-hotel:
+        description: Name of the user to filter by.
+    statement: |
+      SELECT *
+      FROM transactions
+      WHERE from_user = $1::VARCHAR
+      ORDER BY created_at DESC;
+
+  get-users:
     kind: postgres-sql
     source: my-pg-source
-    description: >-
-      Update a hotel's check-in and check-out dates by its ID. Returns a message
-      indicating  whether the hotel was successfully updated or not.
-    parameters:
-      - name: hotel_id
-        type: string
-        description: The ID of the hotel to update.
-      - name: checkin_date
-        type: string
-        description: The new check-in date of the hotel.
-      - name: checkout_date
-        type: string
-        description: The new check-out date of the hotel.
-    statement: >-
-      UPDATE hotels SET checkin_date = CAST($2 as date), checkout_date = CAST($3
-      as date) WHERE id = $1;
-  cancel-hotel:
-    kind: postgres-sql
-    source: my-pg-source
-    description: Cancel a hotel by its ID.
-    parameters:
-      - name: hotel_id
-        type: string
-        description: The ID of the hotel to cancel.
-    statement: UPDATE hotels SET booked = B'0' WHERE id = $1;
+    description: Retrieves all users from the database.
+    parameters: []
+    statement: |
+      SELECT *
+      FROM users
+      ORDER BY created_at DESC;
+
 toolsets:
-  my-toolset:
-    - search-hotels-by-name
-    - search-hotels-by-location
-    - book-hotel
-    - update-hotel
-    - cancel-hotel
+  expense_manager_tools:
+    - add-user
+    - add-transaction
+    - get-transactions
+    - get-users

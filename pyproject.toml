@@ -9,4 +9,5 @@ dependencies = [
     "google-adk>=1.22.0",
     "greenlet>=3.3.0",
     "pydantic>=2.12.5",
+    "toolbox-core>=0.5.7",
 ]

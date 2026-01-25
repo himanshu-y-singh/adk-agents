@@ -32,7 +32,8 @@ class Transaction(Base):
     id: Mapped[UUID] = mapped_column(
         UUID(as_uuid=True),
         primary_key=True,
-        default=uuid.uuid4
+        default=uuid.uuid4,
+        server_default=text("gen_random_uuid()")
     )
     amount: Mapped[float] = mapped_column(Float)
     from_user: Mapped[str] = mapped_column(
