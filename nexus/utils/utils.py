@@ -1,0 +1,17 @@
+import os
+
+def load_prompt_from_file(filename: str) -> str:
+    """Loads a prompt from a file in the prompts directory."""
+    # nexus/utils/utils.py -> nexus/prompts/
+    
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(current_dir) # nexus
+    prompts_dir = os.path.join(project_root, "prompts")
+    
+    file_path = os.path.join(prompts_dir, filename)
+    
+    try:
+        with open(file_path, "r") as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Prompt file not found: {file_path}")

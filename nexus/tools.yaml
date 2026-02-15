@@ -1,0 +1,80 @@
+sources:
+  my-pg-source:
+    kind: postgres
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    database: ${DB_NAME}
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+tools:
+  add-work-log:
+    kind: postgres-sql
+    source: my-pg-source
+    description: Logs a work item for tracking.
+    parameters:
+      - name: content
+        type: string
+        description: Description of the work done.
+      - name: category
+        type: string
+        description: Category of work (e.g., coding, meeting, research).
+    statement: |
+      INSERT INTO work_logs (content, category, created_at)
+      VALUES ($1, $2, now());
+
+  get-work-logs:
+    kind: postgres-sql
+    source: my-pg-source
+    description: Retrieves work logs (e.g., for daily standup).
+    parameters: []
+    statement: |
+      SELECT * FROM work_logs ORDER BY created_at DESC LIMIT 20;
+
+  add-job-app:
+    kind: postgres-sql
+    source: my-pg-source
+    description: Logs a new job application.
+    parameters:
+      - name: company_name
+        type: string
+        description: Name of the company.
+      - name: position
+        type: string
+        description: Position applied for.
+      - name: notes
+        type: string
+        description: Optional notes about the application.
+    statement: |
+      INSERT INTO job_applications (company_name, position, status, notes, applied_date)
+      VALUES ($1, $2, 'applied', COALESCE($3, ''), now());
+
+  get-job-apps:
+    kind: postgres-sql
+    source: my-pg-source
+    description: Retrieves job applications.
+    parameters: []
+    statement: |
+      SELECT * FROM job_applications ORDER BY applied_date DESC;
+
+  update-job-status:
+    kind: postgres-sql
+    source: my-pg-source
+    description: Updates the status of a job application.
+    parameters:
+      - name: job_id
+        type: string
+        description: ID of the job application.
+      - name: status
+        type: string
+        description: New status (applied, interviewing, rejected, offer).
+    statement: |
+      UPDATE job_applications SET status = $2 WHERE id = $1::uuid;
+
+toolsets:
+  nexus_tools:
+    - add-work-log
+    - get-work-logs
+    - add-job-app
+    - get-job-apps
+    - update-job-status

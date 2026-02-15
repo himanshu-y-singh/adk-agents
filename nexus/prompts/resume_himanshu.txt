@@ -1,0 +1,196 @@
+\begin(document)
+    \newcommand(\AND)(\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    )
+    \newsavebox\ANDbox
+    \sbox\ANDbox($|$)
+
+    \begin(header)
+        \fontsize(25 pt)(25 pt)\selectfont  HIMANSHU YADAV
+
+        \vspace(5 pt)
+
+        \normalsize
+        % \mbox(\faMapMarker) (Delhi, India)%
+        % \kern 5.0 pt%
+        % \AND%
+        % \kern 5.0 pt%
+        \mbox 
+           (\hrefWithoutArrow(mailto:youremail@yourdomain.com)( himanshuyadav709203@gmail.com))%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox (\hrefWithoutArrow(tel:+90-541-999-99-99)(+91-7082723940))%
+        % \kern 5.0 pt%
+        % \AND%
+        % \kern 5.0 pt%
+        % \mbox(\hrefWithoutArrow(https://yourwebsite.com/)(yourwebsite.com))%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox 
+       (\hrefWithoutArrow(https://www.linkedin.com/in/himanshu-yadav-4616381ba/)(LinkedIn))%
+        % \kern 5.0 pt%
+        % \AND%
+        % \kern 5.0 pt%
+        % \mbox(\hrefWithoutArrow(https://github.com/hupender)(github.com/yourusername))%
+    \end(header)
+
+    \vspace(5 pt - 0.3 cm)
+
+    \section(Education)
+        
+        \begin(twocolentry)(
+            Jul 2019–May 2023
+        )
+            \textbf(Visvesvaraya National Institute of Technology), BTech
+            \end(twocolentry)
+
+        \vspace(0.10 cm)
+
+\section(Experience)
+
+\begin(twocolentry)(
+    Oct 2023 -- Present
+)
+    \textbf(Advanced Application Engineer), \textbf(Accenture) -- Gurugram
+\end(twocolentry)
+
+\vspace(0.10 cm)
+\begin(onecolentry)
+    \begin(highlights)
+        \item \textbf(Leading development of an agentic AI-driven backend platform) automating the end-to-end SDLC; converted high-level requirements into technical designs and production-ready services, reducing manual engineering effort by \textbf(40--50\%).
+
+        \item \textbf(Optimized Retrieval-Augmented Generation (RAG)) by fine-tuning vector search strategies and implementing contextual semantic search, improving response relevance by \textbf(30\%+) via embeddings and \textbf(metadata-driven segment mapping).
+
+        \item \textbf(Built an interactive LLM evaluation and monitoring framework) using \textbf(TruLens), enabling real-time benchmarking of multiple LLMs across latency, token usage, and response quality to accelerate model selection.
+
+        \item \textbf(Developed and orchestrated LLM agents) using the \textbf(Google ADK), integrating external tools and APIs to execute complex, multi-step AI-driven workflows.
+
+        \item \textbf(Designed and implemented RESTful APIs) using \textbf(NestJS) and \textbf(FastAPI), leveraging modular architecture and middleware to ensure efficient request handling and robust input validation.
+
+        \item \textbf(Managed large-scale data systems) using \textbf(MongoDB) and \textbf(SQL), implementing advanced indexing and optimized schema designs to ensure high performance and data consistency.
+
+        \item \textbf(Implemented centralized frontend logging) using \textbf(loglevel) and integrated \textbf(GlitchTip) dashboards for proactive real-time error tracking and system monitoring.
+
+        \item \textbf(Strengthened UI reliability) using \textbf(Zod) to implement strict runtime validation for dynamic frontend components, reducing client-side execution errors.
+    \end(highlights)
+\end(onecolentry)
+        % \vspace(3 cm)
+
+        % \begin(twocolentry)(
+        %     Jun 2022 - Oct 2022
+        % )
+        %     \textbf( Teaching Assistant – Data Structures (C++)), \textbf(Coding Ninjas) -- Online
+        %     \href(https://ninjasfiles.s3.amazonaws.com/certificate5309003d8891931dedca7bdadf2b8b4b6762.pdf)(\textcolor(blue)(view))
+        %     \end(twocolentry)
+
+        % \vspace(0.10 cm)
+        % \begin(onecolentry)
+        %     \begin(highlights)
+        %         \item Provided real-time doubt resolution and academic support to students enrolled in the Data Structures in C++ program.
+        %         \item Supported students in debugging, optimizing solutions, and applying best coding practices.
+        %     \end(highlights)
+        % \end(onecolentry)
+
+        % \vspace(0.2 cm)
+
+
+
+
+
+    
+   \section(Projects)
+
+\begin(twocolentry)(
+    \href(https://github.com/himanshu-y-singh/ChatAppServer)(\textcolor(blue)(Code Repository))
+)
+    \textbf(Chat Application) | Django, Django Channels, Redis, Celery
+\end(twocolentry)
+
+\vspace(0.05 cm)
+\begin(onecolentry)
+\begin(highlights)
+    \item \textbf(Engineered a full-stack real-time chat and video calling platform) using Django Channels and WebRTC with peer-to-peer media streaming.
+    \item \textbf(Implemented group management and real-time media messaging), supporting image, file, and video uploads with previews and downloads.
+    \item \textbf(Built custom authentication middleware) enabling session- and token-based authentication across REST APIs and WebSocket connections.
+\end(highlights)
+\end(onecolentry)
+
+\vspace(0.20 cm)
+
+\begin(twocolentry)(
+    \href(https://github.com/himanshu-y-singh/saveit)(\textcolor(blue)(Code Repository))
+)
+    \textbf(SaveIT.io — Agentic AI Price Comparison Assistant)
+\end(twocolentry)
+
+\vspace(0.05 cm)
+\begin(onecolentry)
+\begin(highlights)
+    \item \textbf(Designed and built an agentic AI assistant) to compare product prices, platform fees, and minimum order values across quick-commerce platforms.
+    \item \textbf(Developed a virtual cart engine) to compute true total cost and recommend the optimal platform based on price or delivery speed.
+    \item \textbf(Detected and flagged MOV manipulation patterns), helping users avoid unnecessary spending.
+    \item \textbf(Tech Stack:) Next.js, TypeScript, GenAI (ADK), Firebase, Tailwind CSS
+\end(highlights)
+\end(onecolentry)
+
+
+\section(Certifications)
+    
+  
+    \begin(twocolentry)(  
+
+        \href(https://drive.google.com/file/d/13mSsD-R-HtNM-rI2Kol9CTTxfeq81q_k/view?usp=sharing)(\textcolor(blue)(View))
+        )
+        \text (Accenture Stream Training in) \textbf(Machine Learning) and \textbf(Generative AI)
+    \end(twocolentry)
+
+    \begin(twocolentry)(
+            
+        \href(https://www.credly.com/badges/f1b3b144-4c83-403d-a023-79aebb3c4217/public_url)(\textcolor(blue)(View))
+        )
+        \textbf(Professional Cloud DevOps Engineer) 
+        \end(twocolentry)
+
+    \begin(twocolentry)(
+            
+        \href(https://www.credly.com/badges/434dbe2d-5628-40ee-9432-200d35a93353/public_url)(\textcolor(blue)(View))
+        )
+        \textbf(Generative AI Leader) 
+    \end(twocolentry)
+
+    \begin(twocolentry)(
+            
+        \href(https://www.credly.com/badges/0b49082a-211c-4470-8ebe-6f2229f8f518/public_url)(\textcolor(blue)(View))
+        )
+        \textbf(Associate Data Practitioner) 
+    \end(twocolentry)
+
+    \begin(twocolentry)(
+    \href(https://ninjasfiles.s3.amazonaws.com/certificate5309003d8891931dedca7bdadf2b8b4b6762.pdf)(\textcolor(blue)(View))
+)
+    \textbf(Coding Ninjas — Data Structures in C++ (Teaching Assistant))
+    \end(twocolentry)
+    
+\section(Skills)
+
+\begin(onecolentry)
+    \textbf(Programming \& Core:) Python, C++, JavaScript, SQL, OOP, DBMS, Git \\
+    \textbf(Backend Development:) Node.js, Express.js, MongoDB, Django \\
+    \textbf(Frontend Development:) React \\
+    \textbf(Machine Learning \& GenAI:) LLMs, Retrieval-Augmented Generation (RAG), NumPy, Pandas, Scikit-learn
+\end(onecolentry)
+
+\vspace(0.2 cm)
+
+
+        % \begin(onecolentry)
+        %     \textbf(skills:) Django, Git, DSA, OOPs, DBMS, React, node js, express js, mongodb
+        % \end(onecolentry)
+
+
+    
+
+\end(document)

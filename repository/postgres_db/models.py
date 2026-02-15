@@ -1,4 +1,4 @@
-from sqlalchemy import String, DateTime, Float, ForeignKey
+from sqlalchemy import String, DateTime, Float, ForeignKey, text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime
 from repository.postgres_db.base import Base
@@ -48,6 +48,5 @@ class Transaction(Base):
         "User",
         back_populates="transactions"
     )
-    
 
 
